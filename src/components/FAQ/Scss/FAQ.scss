@@ -1,0 +1,215 @@
+.FAQ {
+    .wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        .title {
+            opacity: 0.7;
+            font-weight: 700;
+            text-align: center;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        .questions {
+            padding: 2vw;
+            margin-top: 2vw;
+            border-radius: 25px;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            -ms-border-radius: 25px;
+            -o-border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.08);
+
+            @media (max-width:767px) {
+                width: 100%;
+                border-radius: 15px;
+                -webkit-border-radius: 15px;
+                -moz-border-radius: 15px;
+                -ms-border-radius: 15px;
+                -o-border-radius: 15px;
+            }
+
+            @media (max-width:500px) {
+                padding: 2.5vw;
+                border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -ms-border-radius: 10px;
+                -o-border-radius: 10px;
+            }
+
+            .question {
+                display: flex;
+                padding: 1vw 2vw;
+                margin-top: 20px;
+                position: relative;
+                border-radius: 25px;
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                -ms-border-radius: 25px;
+                -o-border-radius: 25px;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: start;
+                background-color: rgba(255, 255, 255, 0.08);
+
+                @media (max-width:1000px) {
+                    border-radius: 15px;
+                    -webkit-border-radius: 15px;
+                    -moz-border-radius: 15px;
+                    -ms-border-radius: 15px;
+                    -o-border-radius: 15px;
+                }
+
+                @media (max-width:767px) {
+                    margin-top: 10px;
+                    padding: 1.5vw 2vw;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+                }
+
+                &:nth-child(1) {
+                    margin-top: 0;
+                }
+
+                .basic {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .name {
+                    margin: 0;
+                    color: white;
+                    font-size: 1.3vw;
+                    font-weight: 700;
+                    font-family: 'Mulish', sans-serif;
+
+                    @media (max-width:1000px) {
+                        font-size: 1.8vw;
+                    }
+
+                    @media (max-width:767px) {
+                        font-size: 2.5vw;
+                    }
+
+                    @media (max-width:500px) {
+                        font-size: 16px;
+                    }
+                }
+
+                .open-close {
+                    display: flex;
+                    color: black;
+                    cursor: pointer;
+                    max-width: 3.5vw;
+                    min-width: 3.5vw;
+                    max-height: 3.5vw;
+                    min-height: 3.5vw;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    -ms-border-radius: 50%;
+                    -o-border-radius: 50%;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #4D8CE9;
+
+                    @media (max-width:767px) {
+                        max-width: 5vw;
+                        min-width: 5vw;
+                        max-height: 5vw;
+                        min-height: 5vw;
+                    }
+
+                    @media (max-width:500px) {
+                        max-width: 6.5vw;
+                        min-width: 6.5vw;
+                        max-height: 6.5vw;
+                        min-height: 6.5vw;
+                    }
+
+                    .icon {
+                        color: black;
+                        font-size: 2.5vw;
+                        transition: 0.3s;
+                        -webkit-transition: 0.3s;
+                        -moz-transition: 0.3s;
+                        -ms-transition: 0.3s;
+                        -o-transition: 0.3s;
+
+                        @media (max-width:767px) {
+                            font-size: 4vw;
+                        }
+
+                        @media (max-width:500px) {
+                            font-size: 5vw;
+                        }
+                    }
+
+                    .active-icon {
+                        transform: rotate(135deg);
+                        -webkit-transform: rotate(135deg);
+                        -moz-transform: rotate(135deg);
+                        -ms-transform: rotate(135deg);
+                        -o-transform: rotate(135deg);
+                    }
+                }
+
+                .desc {
+                    margin: 0;
+                    height: 0;
+                    color: white;
+                    overflow: hidden;
+                    font-family: 'Mulish', sans-serif;
+
+                    @media(max-width:1000px) {
+                        font-size: 13px;
+                    }
+                }
+
+                .active-desc {
+                    height: auto;
+                    margin-top: 10px;
+
+                    @media (max-width:500px) {
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.light-faq {
+    .wrapper {
+        .title {
+            color: black;
+        }
+
+        .questions {
+            background-color: rgba(0, 0, 0, 0.056);
+
+            .question {
+                background-color: rgba(0, 0, 0, 0.056);
+
+                .name,
+                .desc {
+                    color: black;
+                }
+
+                .open-close {
+                    .icon {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

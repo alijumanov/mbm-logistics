@@ -1,0 +1,98 @@
+@font-face {
+    font-family: zona-pro-bold;
+    src: url(./assets/fonts/zonapro.ttf);
+}
+
+@font-face {
+    font-family: zona-pro;
+    src: url(./assets/fonts/zonapro1.ttf);
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    position: sticky;
+    overflow: hidden;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 50px 15vw;
+
+    @media(max-width:1350px) {
+        padding: 50px 13vw;
+    }
+
+    @media(max-width:900px) {
+        padding: 50px 10vw;
+    }
+
+    @media(max-width:500px) {
+        padding: 30px 7vw;
+    }
+}
+
+.title {
+    color: white;
+    font-size: 2.8vw;
+    font-weight: 400;
+    text-align: center;
+
+    @media (max-width:1200px) {
+        font-size: 3.3vw;
+    }
+
+    @media (max-width:700px) {
+        font-size: 4vw;
+    }
+
+    @media (max-width:500px) {
+        font-size: 5vw;
+    }
+
+    @media (max-width:400px) {
+        font-size: 5.5vw;
+    }
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
+
+.contrast-0 {
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: transparent;
+}
+
+.contrast {
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.48);
+}
+
+.contrast-05 {
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.268);
+}

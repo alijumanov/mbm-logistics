@@ -1,0 +1,178 @@
+.Advantages {
+    .wrapper {
+        display: flex;
+        padding-left: 0;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width:767px) {
+            display: block;
+            padding: 50px 10vw;
+        }
+
+        .img {
+            @media (max-width:767px) {
+                width: 100%;
+            }
+
+            img {
+                max-width: 100%;
+                min-width: 100%;
+
+                @media (max-width:767px) {
+                    max-height: 30vw;
+                    min-height: 30vw;
+                    object-fit: cover;
+                    border-radius: 15px;
+                    -webkit-border-radius: 15px;
+                    -moz-border-radius: 15px;
+                    -ms-border-radius: 15px;
+                    -o-border-radius: 15px;
+                }
+
+                @media (max-width:500px) {
+                    max-height: 40vw;
+                    min-height: 40vw;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+                }
+            }
+        }
+
+        .texts {
+            padding-left: 3vw;
+
+            @media (max-width:767px) {
+                padding: 0;
+                width: 100%;
+                margin-top: 4vw;
+            }
+
+            p {
+                opacity: 0.85;
+                color: white;
+                font-family: 'Mulish', sans-serif;
+
+                @media (max-width:1400px) {
+                    font-size: 15px;
+                }
+
+                @media (max-width:1200px) {
+                    font-size: 14px;
+                }
+
+                @media (max-width:1100px) {
+                    font-size: 13px;
+                }
+
+                @media (max-width:500px) {
+                    text-align: justify;
+                }
+            }
+
+            .icons {
+                display: flex;
+                margin: 3vw 0;
+
+                @media (max-width:500px) {
+                    margin: 5vw 0;
+                }
+
+                .tool {
+                    padding: 0 2vw;
+
+                    .body {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+
+                        img {
+                            max-width: 4vw;
+                            min-width: 4vw;
+
+                            @media (max-width:767px) {
+                                max-width: 8vw;
+                                min-width: 8vw;
+                            }
+
+                            @media (max-width:500px) {
+                                max-width: 10vw;
+                                min-width: 10vw;
+                            }
+                        }
+
+                        .icon {
+                            color: white;
+                            font-size: 4.5vw;
+
+                            @media (max-width:767px) {
+                                font-size: 10vw;
+                            }
+
+                            @media (max-width:450px) {
+                                font-size: 13vw;
+                            }
+                        }
+
+                        p {
+                            margin: 0;
+                            margin-top: 1vw;
+                            font-family: 'Mulish', sans-serif;
+
+                            @media (max-width:767px) {
+                                margin-top: 2vw;
+                            }
+
+                            @media (max-width:500px) {
+                                font-size: 12px;
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .order {
+                opacity: 0.85;
+                margin-top: 2vw;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 700;
+                color: #0066FF;
+                text-decoration: underline;
+                font-family: 'Mulish', sans-serif;
+
+                @media (max-width:1100px) {
+                    font-size: 17px;
+                }
+
+                @media (max-width:500px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.light-advantages{
+    .wrapper{
+        .texts{
+            p{
+                color: black;
+            }
+            .icons{
+                .tool{
+                    .body{
+                        .icon{
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
