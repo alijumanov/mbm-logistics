@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Scss/HomeAbout.scss';
 import { Link } from 'react-router-dom';
-import Img from "../../assets/images/about.png";
+import Img from "../../assets/images/about.jpg";
 
 const HomeAbout = () => {
 

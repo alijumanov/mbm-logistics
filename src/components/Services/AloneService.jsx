@@ -6,7 +6,7 @@ import Info1 from '../../assets/images/info1.png';
 import Info2 from '../../assets/images/info2.png';
 import Info3 from '../../assets/images/info3.png';
 import { Link, useParams } from 'react-router-dom';
-import BackImg from '../../assets/images/service.png';
+import BackImg from '../../assets/images/service.jpg';
 
 const AloneService = ({ english, russian, uzbek, dark, changeModal }) => {
 

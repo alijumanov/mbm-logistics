@@ -1,11 +1,15 @@
 import React from 'react';
 import './Scss/Header.scss';
 import Slider from 'react-slick';
+import { useQuery } from 'react-query';
+import { Skeleton } from '@mui/material';
 import { East } from '@mui/icons-material';
-import { dataSlider } from '../../api/Api';
 import Notification from '../../assets/images/notification.png';
+import { dataSlider, fetchHeaderSliderData } from '../../api/Api';
 
 const Header = ({ english, russian, uzbek }) => {
+
+    // slider settings
 
     const settings = {
         dots: true,
@@ -19,18 +23,55 @@ const Header = ({ english, russian, uzbek }) => {
         pauseOnHover: false
     };
 
+    // data of header-slider
+
+    const { isLoading, data } = useQuery('header-slider', fetchHeaderSliderData);
+
+    // skeleton loading
+
+    if (isLoading) {
+        return (
+            <div className="Header main">
+                <div className="carousel">
+                    <div className="slide-carousel">
+                        <div className="wrapper">
+                            <h1 className='home-title'><Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="70%" /></h1>
+                            <p className="texts">
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="60%" />
+                            </p>
+                            <p className="texts">
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="60%" />
+                            </p>
+                            <div className="col-12 btns">
+                                <Skeleton variant='rounded' sx={{ bgcolor: 'grey.800' }} width="30%" height="4vw" />
+                                <Skeleton variant='rounded' sx={{ bgcolor: 'grey.800' }} width="30%" height="4vw" className='mx-4' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="home-bottom col-12">
+                    <Skeleton variant='rounded' sx={{ bgcolor: 'grey.800' }} width="50%" height="4vw" />
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className='Header main'>
             <Slider {...settings} className="carousel">
-                {dataSlider.map((data) => (
-                    <div key={data.id} className='slide-carousel'>
-                        <img src={data.image} alt="back" className='back-img' />
+                {dataSlider.map((item) => (
+                    <div key={item.id} className='slide-carousel'>
+                        <img src={item.image} alt="back" className='back-img' />
                         <div className="wrapper">
-                            <h1 className="home-title">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h1>
-                            <p className="texts">{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}</p>
-                            <p className="texts">{uzbek && data.description1_uz}{russian && data.description1_ru}{english && data.description1_en}</p>
+                            <h1 className="home-title">{uzbek && item.name_uz}{russian && item.name_ru}{english && item.name_en}</h1>
+                            <p className="texts">{uzbek && item.description_uz}{russian && item.description_ru}{english && item.description_en}</p>
+                            <p className="texts">{uzbek && item.description1_uz}{russian && item.description1_ru}{english && item.description1_en}</p>
                             <div className="col-12 btns">
-                                <a href={data.link} className='explore'>Btafsil tanishish <East className='arrow' /></a>
+                                <a href={item.link} className='explore'>Btafsil tanishish <East className='arrow' /></a>
                                 <a href="#contacts" className="explore">Aloqaga chiqish</a>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Scss/Advantages.scss';
-import Img from '../../assets/images/advantage.png';
+import Img from '../../assets/images/advantage.jpg';
 import { GppGoodRounded, VerifiedRounded, Visibility } from '@mui/icons-material';
 
 const Advantages = ({ dark, changeContactModal }) => {

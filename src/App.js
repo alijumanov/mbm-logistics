@@ -10,6 +10,7 @@ import HeaderRouter from './routes/HeaderRouter';
 import AloneNews from './components/News/AloneNews';
 import AloneService from './components/Services/AloneService';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ContactModal from './components/ContactModal/ContactModal';
 import ScrollPercent from './components/ScrollPercent/ScrollPercent';
@@ -69,26 +70,32 @@ function App() {
 
   const [dark, setDark] = useState(true);
 
+  // react-query
+
+  const queryClient = new QueryClient();
+
   return (
-    <BrowserRouter>
-      <Loader />
-      <ScrollToTop />
-      <Navbar dark={dark} setDark={setDark} changeUzbek={changeUzbek} changeEnglish={changeEnglish} changeRussian={changeRussian} langTitle={langTitle} />
-      <Routes>
-        <Route exact path='/' element={<HeaderRouter dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} changeContactModal={changeContactModal} />} />
-        <Route path='/aboutus' element={<About dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
-        <Route path='/services/:id' element={<AloneService dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
-        <Route path='/news/:id' element={<AloneNews dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
-      </Routes>
-      <ScrollPercent dark={dark} />
-      <Footer dark={dark} />
-      {showModal &&
-        <Modal uzbek={uzbek} russian={russian} english={english} changeModal={changeModal} />
-      }
-      {showContactModal &&
-        <ContactModal changeContactModal={changeContactModal} changeModal={changeModal} />
-      }
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        {/* <Loader /> */}
+        <ScrollToTop />
+        <Navbar dark={dark} setDark={setDark} changeUzbek={changeUzbek} changeEnglish={changeEnglish} changeRussian={changeRussian} langTitle={langTitle} />
+        <Routes>
+          <Route exact path='/' element={<HeaderRouter dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} changeContactModal={changeContactModal} />} />
+          <Route path='/aboutus' element={<About dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
+          <Route path='/services/:id' element={<AloneService dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
+          <Route path='/news/:id' element={<AloneNews dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
+        </Routes>
+        <ScrollPercent dark={dark} />
+        <Footer dark={dark} />
+        {showModal &&
+          <Modal uzbek={uzbek} russian={russian} english={english} changeModal={changeModal} />
+        }
+        {showContactModal &&
+          <ContactModal changeContactModal={changeContactModal} changeModal={changeModal} />
+        }
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

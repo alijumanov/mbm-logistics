@@ -207,9 +207,10 @@
                         -o-border-radius: 2.1vw;
                     }
 
-                    img {
+                    .news-img {
                         max-width: 100%;
                         min-width: 100%;
+                        overflow: hidden;
                         max-height: 8.5vw;
                         min-height: 8.5vw;
                         object-fit: cover;

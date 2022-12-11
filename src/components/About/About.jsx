@@ -8,8 +8,8 @@ import Img2 from '../../assets/images/partner2.png';
 import Img3 from '../../assets/images/partner3.png';
 import Img4 from '../../assets/images/partner4.png';
 import Infografics from '../Infografics/Infografics';
-import BackImg1 from '../../assets/images/about2.png';
-import BackImg from '../../assets/images/header-back.png';
+import BackImg1 from '../../assets/images/about2.jpg';
+import BackImg from '../../assets/images/header-back.jpg';
 
 const About = ({ english, russian, uzbek, changeModal, dark }) => {
 

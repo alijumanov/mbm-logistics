@@ -11,21 +11,21 @@ html {
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    overflow: hidden;
+    // height: 100vh;
+    // overflow: hidden;
     box-sizing: border-box;
     animation: body-page 10s forwards linear;
     -webkit-animation: body-page 10s forwards linear;
 }
 
-@keyframes body-page {
-    90% {
-        height: 100vh;
-        overflow: hidden;
-    }
+// @keyframes body-page {
+//     90% {
+//         height: 100vh;
+//         overflow: hidden;
+//     }
 
-    100% {
-        height: auto;
-        overflow: inherit;
-    }
-}
+//     100% {
+//         height: auto;
+//         overflow: inherit;
+//     }
+// }

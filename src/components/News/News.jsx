@@ -1,8 +1,10 @@
 import React from 'react';
 import './Scss/News.scss';
 import Slider from 'react-slick';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import { dataNews } from '../../api/Api';
+import { Skeleton } from '@mui/material';
+import { dataNews, fetchNewsData } from '../../api/Api';
 import { CalendarToday, Visibility } from '@mui/icons-material';
 
 const News = ({ english, russian, uzbek, dark, main, getId }) => {
@@ -30,6 +32,56 @@ const News = ({ english, russian, uzbek, dark, main, getId }) => {
             },
         ]
     };
+
+    // data of news
+
+    const { isLoading, data } = useQuery('header-slider', fetchNewsData);
+
+    // skeleton loading
+
+    if (isLoading) {
+        return (
+            <div className={`News main ${!dark && "light-news"}`}>
+                <div className="wrapper">
+                    <div className="col-12 main-new">
+                        <div className="body">
+                            <div className="col-5 img">
+                                <Skeleton variant='rectangular' sx={{ bgcolor: 'grey.800' }} width="100%" height="15vw" />
+                            </div>
+                            <div className="col-7 texts">
+                                <h1 className="col-12">
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                </h1>
+                                <p className="col-12">
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                    <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="80%" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <Slider {...settings} className="carousel">
+                        {[1, 2, 3, 4].map((data, index) => (
+                            <div key={index} className="new">
+                                <div className="body">
+                                    <div className='news-img'>
+                                        <Skeleton variant='rectangular' sx={{ bgcolor: 'grey.800' }} width="100%" height="22vw" />
+                                    </div>
+                                    <h1 className="col-12 mt-3"><Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" /></h1>
+                                    <p className="col-12">
+                                        <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="100%" />
+                                        <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="80%" />
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={`News main ${!dark && "light-news"}`}>
@@ -59,7 +111,7 @@ const News = ({ english, russian, uzbek, dark, main, getId }) => {
                         getId != data.id &&
                         <div key={data.id} className="new">
                             <div className="body">
-                                <img src={data.image} alt="img" />
+                                <img src={data.image} alt="img" className='news-img' />
                                 <h3 className="name">{uzbek && data.name_uz.slice(0, 15)}{russian && data.name_ru.slice(0, 15)}{english && data.name_en.slice(0, 15)}...</h3>
                                 <p className="desc">{uzbek && data.description_uz.slice(0, 50)}{russian && data.description_ru.slice(0, 50)}{english && data.description_en.slice(0, 50)}...</p>
                                 <Link to={`/news/${data.id}`} className="explore">batafsil o'qish</Link>

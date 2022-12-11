@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Scss/Contacts.scss';
 import Img1 from '../../assets/images/serv3.png';
-import Img from '../../assets/images/contact.png';
+import Img from '../../assets/images/contact.jpg';
 
 const Contacts = ({ changeModal, dark }) => {
 
