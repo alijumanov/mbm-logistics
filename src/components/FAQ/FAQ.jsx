@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { dataFaqs, fetchFaqsData } from '../../api/Api';
 
-const FAQ = ({ english, russian, uzbek, dark }) => {
+const FAQ = ({ english, russian, uzbek, mandarin, dark }) => {
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -47,10 +47,10 @@ const FAQ = ({ english, russian, uzbek, dark }) => {
                     {dataFaqs.map((data) => (
                         <div key={data.id} className="col-12 question">
                             <div className="basic">
-                                <h4 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h4>
+                                <h4 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h4>
                                 <div className="open-close" onClick={() => activeIndex != dataFaqs.indexOf(data) ? setActiveIndex(dataFaqs.indexOf(data)) : setActiveIndex(null)}><Add className={`icon ${activeIndex == dataFaqs.indexOf(data) && "active-icon"}`} /></div>
                             </div>
-                            <div className={`desc ${activeIndex == dataFaqs.indexOf(data) && "active-desc"}`}>{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}</div>
+                            <div className={`desc ${activeIndex == dataFaqs.indexOf(data) && "active-desc"}`}>{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}{mandarin && data.description_mn}</div>
                         </div>
                     ))}
                 </div>

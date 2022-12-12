@@ -5,7 +5,7 @@ import { dataNews } from '../../api/Api';
 import Contacts from '../Contacts/Contacts';
 import { Link, useParams } from 'react-router-dom';
 
-const AloneNews = ({ english, russian, uzbek, changeModal, dark }) => {
+const AloneNews = ({ english, russian, uzbek, mandarin, changeModal, dark }) => {
 
     const { id } = useParams();
 
@@ -23,11 +23,11 @@ const AloneNews = ({ english, russian, uzbek, changeModal, dark }) => {
                     <div className="col-12 imgs">
                         <img src={data.image} alt="backImg" className='back-img' />
                     </div>
-                    <div className="wrapper" style={{paddingBottom: "10px"}}>
-                        <h1 className="title">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h1>
-                        <p className="text">{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}</p>
+                    <div className="wrapper" style={{ paddingBottom: "10px" }}>
+                        <h1 className="title">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h1>
+                        <p className="text">{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}{mandarin && data.description_mn}</p>
                     </div>
-                    <News getId={id} english={english} uzbek={uzbek} russian={russian} dark={dark} main={false} />
+                    <News getId={id} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} dark={dark} main={false} />
                 </div>
             ))}
             <div style={{ backgroundColor: `${dark ? "black" : "#F2F2F2"}` }}>

@@ -20,7 +20,7 @@ i18next
       order: ["localStorage", "cookie"],
       caches: ["localStorage", "cookie"]
     },
-    supportedLngs: ["uz", "ru", "en"],
+    supportedLngs: ["uz", "ru", "en", "zh"],
     interpolation: {
       escapeValue: false
     },

@@ -10,18 +10,18 @@ import Calculator from '../components/Calculator/Calculator';
 import Advantages from '../components/Advantages/Advantages';
 import Infografics from '../components/Infografics/Infografics';
 
-const HeaderRouter = ({ english, russian, uzbek, changeModal, dark, changeContactModal }) => {
+const HeaderRouter = ({ english, russian, uzbek, mandarin, changeModal, dark, changeContactModal }) => {
     return (
         <div style={{ backgroundColor: `${dark ? "#1A1A1A" : "#F2F2F2"}` }}>
-            <Header english={english} uzbek={uzbek} russian={russian} />
-            <Services english={english} uzbek={uzbek} russian={russian} dark={dark} />
+            <Header english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} />
+            <Services english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} dark={dark} />
             <Calculator changeModal={changeModal} dark={dark} />
-            <News getId={1} english={english} uzbek={uzbek} russian={russian} dark={dark} main={true} />
+            <News getId={1} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} dark={dark} main={true} />
             <Infografics dark={dark} />
-            <FAQ english={english} uzbek={uzbek} russian={russian} dark={dark} />
+            <FAQ english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} dark={dark} />
             <HomeAbout />
             <Advantages dark={dark} changeContactModal={changeContactModal} />
-            <Comments english={english} uzbek={uzbek} russian={russian} dark={dark} />
+            <Comments english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} dark={dark} />
             <Contacts changeModal={changeModal} dark={dark} />
         </div>
     );

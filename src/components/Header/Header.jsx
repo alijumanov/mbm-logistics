@@ -7,7 +7,7 @@ import { East } from '@mui/icons-material';
 import Notification from '../../assets/images/notification.png';
 import { dataSlider, fetchHeaderSliderData } from '../../api/Api';
 
-const Header = ({ english, russian, uzbek }) => {
+const Header = ({ english, russian, uzbek, mandarin }) => {
 
     // slider settings
 
@@ -63,13 +63,13 @@ const Header = ({ english, russian, uzbek }) => {
     return (
         <div className='Header main'>
             <Slider {...settings} className="carousel">
-                {dataSlider.map((item) => (
+                {data?.data.map((item) => (
                     <div key={item.id} className='slide-carousel'>
                         <img src={item.image} alt="back" className='back-img' />
                         <div className="wrapper">
-                            <h1 className="home-title">{uzbek && item.name_uz}{russian && item.name_ru}{english && item.name_en}</h1>
-                            <p className="texts">{uzbek && item.description_uz}{russian && item.description_ru}{english && item.description_en}</p>
-                            <p className="texts">{uzbek && item.description1_uz}{russian && item.description1_ru}{english && item.description1_en}</p>
+                            <h1 className="home-title">{uzbek && item.name_uz}{russian && item.name_ru}{english && item.name_en}{mandarin && item.name_mn}</h1>
+                            <p className="texts">{uzbek && item.description_uz}{russian && item.description_ru}{english && item.description_en}{mandarin && item.description_mn}</p>
+                            {/* <p className="texts">{uzbek && item.description1_uz}{russian && item.description1_ru}{english && item.description1_en}{mandarin && item.description1_mn}</p> */}
                             <div className="col-12 btns">
                                 <a href={item.link} className='explore'>Btafsil tanishish <East className='arrow' /></a>
                                 <a href="#contacts" className="explore">Aloqaga chiqish</a>

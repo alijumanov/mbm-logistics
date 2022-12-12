@@ -1,32 +1,19 @@
 import React, { useState } from 'react';
 import './Scss/About.scss';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import Contacts from '../Contacts/Contacts';
 import Play from '../../assets/images/play.png';
-import Img1 from '../../assets/images/partner1.png';
-import Img2 from '../../assets/images/partner2.png';
-import Img3 from '../../assets/images/partner3.png';
-import Img4 from '../../assets/images/partner4.png';
 import Infografics from '../Infografics/Infografics';
 import BackImg1 from '../../assets/images/about2.jpg';
 import BackImg from '../../assets/images/header-back.jpg';
+import { dataPartners, fetchPartnersData } from '../../api/Api';
 
-const About = ({ english, russian, uzbek, changeModal, dark }) => {
+const About = ({ english, russian, uzbek, mandarin, changeModal, dark }) => {
 
-    const dataPartners = [
-        { id: 1, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "O'zbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "O'zbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 2, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 3, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 4, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 5, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 6, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 7, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 8, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 9, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 10, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 11, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
-        { id: 12, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" }
-    ];
+    // data of services
+
+    const { isLoading, data } = useQuery('header-slider', fetchPartnersData);
 
     // video
 
@@ -42,8 +29,6 @@ const About = ({ english, russian, uzbek, changeModal, dark }) => {
                         <a className='link' href="#">About us</a>
                     </div>
                 </div>
-                {/* <div className="col-12 imgs">
-                </div> */}
                 <img src={BackImg} alt="backImg" className='fixed-img' />
                 <div className="wrapper middle-page" style={{ backgroundColor: `${dark ? "#1A1A1A" : "#F2F2F2"}`, paddingBottom: "10px" }}>
                     <p className="text">
@@ -65,8 +50,8 @@ const About = ({ english, russian, uzbek, changeModal, dark }) => {
                                         <img src={data.image} alt="img" />
                                     </div>
                                     <div className="texts">
-                                        <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h3>
-                                        <p className="desc">{uzbek && data.description_uz.slice(0, 45)}{russian && data.description_ru.slice(0, 45)}{english && data.description_en.slice(0, 45)}...</p>
+                                        <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h3>
+                                        <p className="desc">{uzbek && data.description_uz.slice(0, 45)}{russian && data.description_ru.slice(0, 45)}{english && data.description_en.slice(0, 45)}{mandarin && data.description_mn.slice(0, 45)}...</p>
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@ import Info3 from '../../assets/images/info3.png';
 import { Link, useParams } from 'react-router-dom';
 import BackImg from '../../assets/images/service.jpg';
 
-const AloneService = ({ english, russian, uzbek, dark, changeModal }) => {
+const AloneService = ({ english, russian, uzbek, mandarin, dark, changeModal }) => {
 
     const { id } = useParams();
 
@@ -16,12 +16,12 @@ const AloneService = ({ english, russian, uzbek, dark, changeModal }) => {
         <div className={`AloneService main ${!dark && "light-aloneservices"}`} style={{ backgroundColor: `${dark ? "#1A1A1A" : "#F2F2F2"}` }}>
             {dataServices.filter((c) => c.id == id).map((data) => (
                 <div key={data.id} className="wrapper top-wrapper">
-                    <h1 className="title">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h1>
+                    <h1 className="title">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h1>
                     <div className="links">
                         <Link className='link' to="/">Home &#62;</Link>
                         <a className='link' href="#">About us</a>
                     </div>
-                    <p className="desc">{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}</p>
+                    <p className="desc">{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}{mandarin && data.description_mn}</p>
                     <div className="info-cards">
                         <div className="col-4 info">
                             <div className="body">

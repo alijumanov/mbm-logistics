@@ -5,7 +5,7 @@ import { dataComments, fetchCommentsData } from '../../api/Api';
 import { useQuery } from 'react-query';
 import { Skeleton } from '@mui/material';
 
-const Comments = ({ english, russian, uzbek, dark }) => {
+const Comments = ({ english, russian, uzbek, mandarin, dark }) => {
 
     const settings = {
         dots: false,
@@ -82,10 +82,10 @@ const Comments = ({ english, russian, uzbek, dark }) => {
                             <div className="body">
                                 <img src={data.image} alt="img" className='comment-img' />
                                 <div className="top">
-                                    <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h3>
+                                    <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h3>
                                     <div className="date">{data.date}</div>
                                 </div>
-                                <p className='desc'>{uzbek && data.description_uz.slice(0, 120)}{russian && data.description_ru.slice(0, 120)}{english && data.description_en.slice(0, 120)}...</p>
+                                <p className='desc'>{uzbek && data.description_uz.slice(0, 120)}{russian && data.description_ru.slice(0, 120)}{english && data.description_en.slice(0, 120)}{mandarin && data.description_mn.slice(0, 120)}...</p>
                             </div>
                         </div>
                     ))}

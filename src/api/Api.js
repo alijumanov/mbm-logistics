@@ -1,5 +1,9 @@
 import axios from 'axios';
 import NewImg from '../assets/images/news.png';
+import Img1 from '../assets/images/partner1.png';
+import Img2 from '../assets/images/partner2.png';
+import Img3 from '../assets/images/partner3.png';
+import Img4 from '../assets/images/partner4.png';
 import ServImg1 from '../assets/images/serv1.png';
 import ServImg2 from '../assets/images/serv2.png';
 import ServImg3 from '../assets/images/serv3.png';
@@ -9,7 +13,7 @@ import ServImg6 from '../assets/images/serv6.png';
 import CommentImg1 from '../assets/images/comment1.png';
 import CommentImg2 from '../assets/images/comment2.png';
 import HeaderBackImg from '../assets/images/header-back.jpg';
-import { COMMENTS_DATA_URL, FAQ_DATA_URL, HEADER_SLIDER_URL, NEWS_DATA_URL, SERVICES_DATA_URL } from './ApiLink';
+import { COMMENTS_DATA_URL, FAQ_DATA_URL, HEADER_SLIDER_URL, NEWS_DATA_URL, PARTNERS_DATA_URL, SERVICES_DATA_URL } from './ApiLink';
 
 // header slider API
 
@@ -79,4 +83,25 @@ export const dataComments = [
     { id: 2, image: CommentImg2, date: "20.01.2022", name_uz: "apple company", name_ru: "apple company", name_en: "apple company", description_uz: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_ru: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_en: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully" },
     { id: 3, image: CommentImg1, date: "20.01.2022", name_uz: "apple company", name_ru: "apple company", name_en: "apple company", description_uz: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_ru: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_en: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully" },
     { id: 4, image: CommentImg2, date: "20.01.2022", name_uz: "apple company", name_ru: "apple company", name_en: "apple company", description_uz: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_ru: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully", description_en: "We coordinate all shipments through a large network of licensed Auto Shipping Carriers nationwide. All Carriers are legally required to be fully" }
+];
+
+// partners API
+
+export const fetchPartnersData = () => {
+    return axios.get(PARTNERS_DATA_URL)
+}
+
+export const dataPartners = [
+    { id: 1, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "O'zbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "O'zbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 2, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 3, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 4, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 5, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 6, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 7, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 8, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 9, image: Img1, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 10, image: Img2, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 11, image: Img3, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" },
+    { id: 12, image: Img4, name_uz: "Plan baby", name_en: "Plan baby", name_ru: "Plan baby", description_uz: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_ru: "Ozbekistondagi eng katta dori ishlab chiqarubchi", description_en: "Ozbekistondagi eng katta dori ishlab chiqarubchi" }
 ];

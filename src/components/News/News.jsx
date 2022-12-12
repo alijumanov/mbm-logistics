@@ -7,7 +7,7 @@ import { Skeleton } from '@mui/material';
 import { dataNews, fetchNewsData } from '../../api/Api';
 import { CalendarToday, Visibility } from '@mui/icons-material';
 
-const News = ({ english, russian, uzbek, dark, main, getId }) => {
+const News = ({ english, russian, uzbek, mandarin, dark, main, getId }) => {
 
     const settings = {
         dots: true,
@@ -98,8 +98,8 @@ const News = ({ english, russian, uzbek, dark, main, getId }) => {
                                     <div className="view"><Visibility className='icon' /> 16.5 k views</div>
                                     <div className="date"><CalendarToday className='icon' /> {data.date}</div>
                                 </div>
-                                <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h3>
-                                <p className="desc">{uzbek && data.description_uz.slice(0, 330)}{russian && data.description_ru.slice(0, 330)}{english && data.description_en.slice(0, 330)}...</p>
+                                <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h3>
+                                <p className="desc">{uzbek && data.description_uz.slice(0, 330)}{russian && data.description_ru.slice(0, 330)}{english && data.description_en.slice(0, 330)}{mandarin && data.description_mn.slice(0, 330)}...</p>
                                 <Link to={`/news/${data.id}`} className="explore">batafsil o'qish</Link>
                             </div>
                         </div>
@@ -112,8 +112,8 @@ const News = ({ english, russian, uzbek, dark, main, getId }) => {
                         <div key={data.id} className="new">
                             <div className="body">
                                 <img src={data.image} alt="img" className='news-img' />
-                                <h3 className="name">{uzbek && data.name_uz.slice(0, 15)}{russian && data.name_ru.slice(0, 15)}{english && data.name_en.slice(0, 15)}...</h3>
-                                <p className="desc">{uzbek && data.description_uz.slice(0, 50)}{russian && data.description_ru.slice(0, 50)}{english && data.description_en.slice(0, 50)}...</p>
+                                <h3 className="name">{uzbek && data.name_uz.slice(0, 15)}{russian && data.name_ru.slice(0, 15)}{english && data.name_en.slice(0, 15)}{mandarin && data.name_mn.slice(0, 15)}...</h3>
+                                <p className="desc">{uzbek && data.description_uz.slice(0, 50)}{russian && data.description_ru.slice(0, 50)}{english && data.description_en.slice(0, 50)}{mandarin && data.description_mn.slice(0, 50)}...</p>
                                 <Link to={`/news/${data.id}`} className="explore">batafsil o'qish</Link>
                             </div>
                         </div>

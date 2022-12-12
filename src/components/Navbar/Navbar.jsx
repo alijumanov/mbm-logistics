@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
 import { Close, Menu, ModeNight, Phone, WbSunnyRounded } from '@mui/icons-material';
 
-const Navbar = ({ changeUzbek, changeEnglish, changeRussian, langTitle, dark, setDark }) => {
+const Navbar = ({ changeUzbek, changeEnglish, changeRussian, changeMandarin, langTitle, dark, setDark }) => {
 
     // languages
 
@@ -22,6 +22,11 @@ const Navbar = ({ changeUzbek, changeEnglish, changeRussian, langTitle, dark, se
 
     function changeHandleRussian() {
         changeRussian(true)
+        setLanguage(!language)
+    };
+
+    function changeHandleMandarin() {
+        changeMandarin(true)
         setLanguage(!language)
     };
 
@@ -145,6 +150,7 @@ const Navbar = ({ changeUzbek, changeEnglish, changeRussian, langTitle, dark, se
                         <li onClick={() => changeHandleUzbek()}><div className='lang-link'>UZ</div></li>
                         <li onClick={() => changeHandleEnglish()}><div className='lang-link'>EN</div></li>
                         <li onClick={() => changeHandleRussian()}><div className='lang-link'>RU</div></li>
+                        <li onClick={() => changeHandleMandarin()}><div className='lang-link'>ZH</div></li>
                     </ul>
                     <div className={`contrast-0 ${!language && "d-none"}`} onClick={() => setLanguage(!language)}></div>
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Scss/Modal.scss';
 
-const Modal = ({ english, russian, uzbek, changeModal }) => {
+const Modal = ({ english, russian, uzbek, mandarin, changeModal }) => {
     return (
         <>
             <div className='Modal'>
@@ -13,6 +13,9 @@ const Modal = ({ english, russian, uzbek, changeModal }) => {
                 }
                 {uzbek &&
                     <h1>MUROJAATINGIZ UCHUN TASHAKKUR &#128522;</h1>
+                }
+                {mandarin &&
+                    <h1>感謝您的上訴 &#128522;</h1>
                 }
                 <button onClick={() => changeModal()}>OK</button>
             </div>

@@ -24,12 +24,14 @@ function App() {
   const [english, setEnglish] = useState(localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng') == "en" ? true : false : false);
   const [russian, setRussian] = useState(localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng') == "ru" ? true : false : false);
   const [uzbek, setUzbek] = useState(localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng') == "uz" ? true : false : false);
+  const [mandarin, setMandarin] = useState(localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng') == "zh" ? true : false : false);
   const [langTitle, setLangTitle] = useState(localStorage.getItem('i18nextLng') ? localStorage.getItem('i18nextLng').toUpperCase() : "");
 
   function changeUzbek(item) {
     setUzbek(item)
     setEnglish(!item)
     setRussian(!item)
+    setMandarin(!item)
     i18n.changeLanguage("uz")
     setLangTitle(localStorage.getItem('i18nextLng').toUpperCase())
   };
@@ -38,6 +40,7 @@ function App() {
     setUzbek(!item)
     setRussian(item)
     setEnglish(!item)
+    setMandarin(!item)
     i18n.changeLanguage("ru")
     setLangTitle(localStorage.getItem('i18nextLng').toUpperCase())
   };
@@ -46,7 +49,17 @@ function App() {
     setUzbek(!item)
     setEnglish(item)
     setRussian(!item)
+    setMandarin(!item)
     i18n.changeLanguage("en")
+    setLangTitle(localStorage.getItem('i18nextLng').toUpperCase())
+  };
+
+  function changeMandarin(item) {
+    setUzbek(!item)
+    setEnglish(!item)
+    setRussian(!item)
+    setMandarin(item)
+    i18n.changeLanguage("zh")
     setLangTitle(localStorage.getItem('i18nextLng').toUpperCase())
   };
 
@@ -79,17 +92,17 @@ function App() {
       <BrowserRouter>
         {/* <Loader /> */}
         <ScrollToTop />
-        <Navbar dark={dark} setDark={setDark} changeUzbek={changeUzbek} changeEnglish={changeEnglish} changeRussian={changeRussian} langTitle={langTitle} />
+        <Navbar dark={dark} setDark={setDark} changeUzbek={changeUzbek} changeEnglish={changeEnglish} changeRussian={changeRussian} changeMandarin={changeMandarin} langTitle={langTitle} />
         <Routes>
-          <Route exact path='/' element={<HeaderRouter dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} changeContactModal={changeContactModal} />} />
-          <Route path='/aboutus' element={<About dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
-          <Route path='/services/:id' element={<AloneService dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
-          <Route path='/news/:id' element={<AloneNews dark={dark} english={english} uzbek={uzbek} russian={russian} changeModal={changeModal} />} />
+          <Route exact path='/' element={<HeaderRouter dark={dark} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} changeModal={changeModal} changeContactModal={changeContactModal} />} />
+          <Route path='/aboutus' element={<About dark={dark} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} changeModal={changeModal} />} />
+          <Route path='/services/:id' element={<AloneService dark={dark} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} changeModal={changeModal} />} />
+          <Route path='/news/:id' element={<AloneNews dark={dark} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} changeModal={changeModal} />} />
         </Routes>
         <ScrollPercent dark={dark} />
         <Footer dark={dark} />
         {showModal &&
-          <Modal uzbek={uzbek} russian={russian} english={english} changeModal={changeModal} />
+          <Modal uzbek={uzbek} russian={russian} english={english} mandarin={mandarin} changeModal={changeModal} />
         }
         {showContactModal &&
           <ContactModal changeContactModal={changeContactModal} changeModal={changeModal} />

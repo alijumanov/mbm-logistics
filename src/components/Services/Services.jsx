@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
 import { dataServices, fetchServicesData } from '../../api/Api';
 
-const Services = ({ english, russian, uzbek, dark }) => {
+const Services = ({ english, russian, uzbek, mandarin, dark }) => {
 
     // data of services
 
@@ -55,8 +55,8 @@ const Services = ({ english, russian, uzbek, dark }) => {
                                     <img src={data.image} alt="img" className='services-img' />
                                 </div>
                                 <div className="texts">
-                                    <h5 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}</h5>
-                                    <p className="desc">{uzbek && data.description_uz.slice(0, 130)}{russian && data.description_ru.slice(0, 130)}{english && data.description_en.slice(0, 130)}...</p>
+                                    <h5 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h5>
+                                    <p className="desc">{uzbek && data.description_uz.slice(0, 130)}{russian && data.description_ru.slice(0, 130)}{english && data.description_en.slice(0, 130)}{mandarin && data.description_mn.slice(0, 130)}...</p>
                                     <div className="explore">batafsil</div>
                                 </div>
                             </Link>
