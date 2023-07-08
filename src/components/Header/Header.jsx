@@ -4,17 +4,18 @@ import Slider from 'react-slick';
 import { useQuery } from 'react-query';
 import { Skeleton } from '@mui/material';
 import { East } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
+import { fetchHeaderSliderData } from '../../api/Api';
 import Notification from '../../assets/images/notification.png';
-import { dataSlider, fetchHeaderSliderData } from '../../api/Api';
 
-const Header = ({ english, russian, uzbek, mandarin }) => {
+const Header = ({ english, russian, uzbek, mandarin, changeScrollServices }) => {
 
     // slider settings
 
     const settings = {
         dots: true,
         speed: 2000,
-        autoplay: true,
+        // autoplay: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -22,6 +23,10 @@ const Header = ({ english, russian, uzbek, mandarin }) => {
         autoplaySpeed: 6000,
         pauseOnHover: false
     };
+
+    // i18next
+
+    const {t} = useTranslation();
 
     // data of header-slider
 
@@ -35,12 +40,10 @@ const Header = ({ english, russian, uzbek, mandarin }) => {
                 <div className="carousel">
                     <div className="slide-carousel">
                         <div className="wrapper">
-                            <h1 className='home-title'><Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="70%" /></h1>
-                            <p className="texts">
-                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
-                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
-                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="60%" />
-                            </p>
+                            <h1 className='home-title'>
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="70%" />
+                                <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} width="50%" />
+                            </h1>
                             <p className="texts">
                                 <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
                                 <Skeleton variant='text' sx={{ bgcolor: 'grey.800' }} />
@@ -71,15 +74,15 @@ const Header = ({ english, russian, uzbek, mandarin }) => {
                             <p className="texts">{uzbek && item.description_uz}{russian && item.description_ru}{english && item.description_en}{mandarin && item.description_mn}</p>
                             {/* <p className="texts">{uzbek && item.description1_uz}{russian && item.description1_ru}{english && item.description1_en}{mandarin && item.description1_mn}</p> */}
                             <div className="col-12 btns">
-                                <a href={item.link} className='explore'>Btafsil tanishish <East className='arrow' /></a>
-                                <a href="#contacts" className="explore">Aloqaga chiqish</a>
+                                <a href={item.link} className='explore'>{t("p1btn")} <East className='arrow' /></a>
+                                <a href="#contacts" className="explore">{t("p1btn2")} <East className='arrow res-arrow' /></a>
                             </div>
                         </div>
                     </div>
                 ))}
             </Slider>
             <div className="home-bottom col-12">
-                <div className="notification"><img src={Notification} alt="bell" className='bell' /> Birinchi buyurtma uchun 10% chegirmaga ega bo`ling</div>
+                <div className="notification" onClick={changeScrollServices}><img src={Notification} alt="bell" className='bell' /> {t("marketing")}</div>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Scss/Calculator.scss';
+import { useTranslation } from 'react-i18next';
 import Truck from '../../assets/images/animationtruck.png';
 
 const Calculator = ({ changeModal, dark }) => {
@@ -117,49 +118,79 @@ const Calculator = ({ changeModal, dark }) => {
         }
     };
 
+    // i18next
+
+    const { t } = useTranslation();
+
     return (
         <div className={`Calculator main ${!dark && "light-calculator"}`}>
             <div className="wrapper">
-                <div className="title">Юкингизни хисобланг</div>
+                <div className="title">{t("cal")}</div>
                 <div className="forms col-12">
                     <div className="desc-res">
-                        <h1 className="title">Qanday ishlaydi?</h1>
-                        <p>ozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadi</p>
+                        <h1 className="title">{t("calname")}</h1>
+                        <p>{t("caldes")}</p>
                     </div>
                     <div className="col-9 inputs">
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidPlaceFrom && `solid 1px red` }} type="text" value={placeFromValue} onChange={(e) => changePlaceFrom(e.target.value)} placeholder='qayerdan? *' />
+                            <input style={{ border: invalidPlaceFrom && `solid 1px red` }} type="text" value={placeFromValue} onChange={(e) => changePlaceFrom(e.target.value)} placeholder={`${t("w1")} *`} />
                         </div>
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidPlaceTo && `solid 1px red` }} type="text" value={placeToValue} onChange={(e) => changePlaceTo(e.target.value)} placeholder='qayerga?' />
+                            <input style={{ border: invalidPlaceTo && `solid 1px red` }} type="text" value={placeToValue} onChange={(e) => changePlaceTo(e.target.value)} placeholder={`${t("w2")}`} />
                         </div>
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidFormat && `solid 1px red` }} type="number" value={formatValue} onChange={(e) => changeFormat(e.target.value)} placeholder='hajmi' />
+                            <input style={{ border: invalidFormat && `solid 1px red` }} type="number" value={formatValue} onChange={(e) => changeFormat(e.target.value)} placeholder={`${t("w3")}`} />
                         </div>
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidWeight && `solid 1px red` }} type="number" value={weightValue} onChange={(e) => changeWeight(e.target.value)} placeholder='og`irligi' />
+                            <input style={{ border: invalidWeight && `solid 1px red` }} type="number" value={weightValue} onChange={(e) => changeWeight(e.target.value)} placeholder={`${t("w4")}`} />
                         </div>
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidName && `solid 1px red` }} type="text" value={nameValue} onChange={(e) => changeName(e.target.value)} placeholder='ismingiz' />
+                            <input style={{ border: invalidName && `solid 1px red` }} type="text" value={nameValue} onChange={(e) => changeName(e.target.value)} placeholder={`${t("w5")}`} />
                         </div>
                         <div className="col-6 forms-control">
-                            <input style={{ border: invalidNumber && `solid 1px red` }} type="number" value={numberValue} onChange={(e) => changeNumber(e.target.value)} placeholder='raqamingiz' />
+                            <input style={{ border: invalidNumber && `solid 1px red` }} type="number" value={numberValue} onChange={(e) => changeNumber(e.target.value)} placeholder={`${t("w6")}`} />
                         </div>
                         <div className="col-12 forms-control">
-                            <textarea style={{ border: invalidText && `solid 1px red` }} rows="6" value={textValue} onChange={(e) => changeText(e.target.value)} placeholder='qoshimcha malumotlar'></textarea>
+                            <textarea style={{ border: invalidText && `solid 1px red` }} rows="6" value={textValue} onChange={(e) => changeText(e.target.value)} placeholder={`${t("w7")}`}></textarea>
                         </div>
                         <div className="button col-12">
-                            <button onClick={() => sendMessage()}>yuborish</button>
+                            <button onClick={() => sendMessage()}>{t("send")}</button>
                         </div>
                     </div>
                     <div className="texts col-3">
                         <div className="desc">
-                            <h1 className="title">Qanday ishlaydi?</h1>
-                            <p>ozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadi</p>
+                            <h1 className="title">{t("calname")}</h1>
+                            <p>{t("caldes")}</p>
                         </div>
                         <div className="col-12">
-                            <p className={`invalid`} style={{color: invalid ? "#E70000" : "transparent"}}>siz hali ma'lumotarni kiritmadingiz!</p>
-                            <button onClick={() => sendMessage()}>yuborish</button>
+                            <p className={`invalid`} style={{ color: invalid ? "#E70000" : "transparent" }}>{t("w8")}</p>
+                            <button onClick={() => sendMessage()}>{t("send")}</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards col-12">
+                    <div className="info col-6">
+                        <div className="body">
+                            <h5 className='name'>{t("card1")}</h5>
+                            <p className="desc">{t("card2")}</p>
+                        </div>
+                    </div>
+                    <div className="info col-6">
+                        <div className="body">
+                            <h5 className='name'>{t("card3")}</h5>
+                            <p className="desc">{t("card4")}</p>
+                        </div>
+                    </div>
+                    <div className="info col-6">
+                        <div className="body">
+                            <h5 className='name'>{t("card5")}</h5>
+                            <p className="desc">{t("card6")}</p>
+                        </div>
+                    </div>
+                    <div className="info col-6">
+                        <div className="body">
+                            <h5 className='name'>{t("card7")}</h5>
+                            <p className="desc">{t("card8")}</p>
                         </div>
                     </div>
                 </div>
@@ -167,20 +198,20 @@ const Calculator = ({ changeModal, dark }) => {
             <div className="animation-area col-12">
                 <img src={Truck} alt="truck" className='truck' />
                 <div className="card1 animation-card col-2">
-                    <h5 className='name'>Car delivery</h5>
-                    <p className="desc">машиналарни етказиш / ташиши хизмати</p>
+                    <h5 className='name'>{t("card1")}</h5>
+                    <p className="desc">{t("card2")}</p>
                 </div>
                 <div className="card2 animation-card col-2">
-                    <h5 className='name'>Car delivery</h5>
-                    <p className="desc">машиналарни етказиш / ташиши хизмати</p>
+                    <h5 className='name'>{t("card3")}</h5>
+                    <p className="desc">{t("card4")}</p>
                 </div>
                 <div className="card3 animation-card col-2">
-                    <h5 className='name'>Car delivery</h5>
-                    <p className="desc">машиналарни етказиш / ташиши хизмати</p>
+                    <h5 className='name'>{t("card5")}</h5>
+                    <p className="desc">{t("card6")}</p>
                 </div>
                 <div className="card4 animation-card col-2">
-                    <h5 className='name'>Car delivery</h5>
-                    <p className="desc">машиналарни етказиш / ташиши хизмати</p>
+                    <h5 className='name'>{t("card7")}</h5>
+                    <p className="desc">{t("card8")}</p>
                 </div>
             </div>
         </div>

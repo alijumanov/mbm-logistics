@@ -45,6 +45,7 @@
                 padding: 10px;
                 text-align: left;
                 font-weight: 600;
+                text-transform: uppercase;
                 font-family: 'Mulish', sans-serif;
 
                 @media (max-width:767px) {
@@ -111,14 +112,16 @@
                     border: none;
                     outline: none;
                     color: white;
-                    font-size: 18px;
+                    font-size: 20px;
                     padding: 17px 0;
+                    font-weight: 600;
                     border-radius: 18px;
                     -webkit-border-radius: 18px;
                     -moz-border-radius: 18px;
                     -ms-border-radius: 18px;
                     -o-border-radius: 18px;
-                    background-color: #6ca7ff52;
+                    background-color: #377DE7;
+                    font-family: 'Mulish', sans-serif;
 
                     &:hover {
                         background-color: black;
@@ -378,7 +381,11 @@
 
                     p {
                         font-weight: 300;
+                        overflow: hidden;
                         margin-bottom: 3px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
                     }
                 }
 

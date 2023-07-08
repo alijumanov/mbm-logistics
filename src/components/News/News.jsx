@@ -4,7 +4,8 @@ import Slider from 'react-slick';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
-import { dataNews, fetchNewsData } from '../../api/Api';
+import { fetchNewsData } from '../../api/Api';
+import { useTranslation } from 'react-i18next';
 import { CalendarToday, Visibility } from '@mui/icons-material';
 
 const News = ({ english, russian, uzbek, mandarin, dark, main, getId }) => {
@@ -33,9 +34,13 @@ const News = ({ english, russian, uzbek, mandarin, dark, main, getId }) => {
         ]
     };
 
+    // i18next
+
+    const { t } = useTranslation();
+
     // data of news
 
-    const { isLoading, data } = useQuery('header-slider', fetchNewsData);
+    const { isLoading, data } = useQuery('news', fetchNewsData);
 
     // skeleton loading
 
@@ -86,36 +91,36 @@ const News = ({ english, russian, uzbek, mandarin, dark, main, getId }) => {
     return (
         <div className={`News main ${!dark && "light-news"}`}>
             <div className="wrapper" style={{ paddingTop: !main && "0px" }}>
-                {main && dataNews.slice(0, 1).map((data) => (
-                    <div key={data.id} className="col-12 main-new">
+                {main && data?.data.slice(0, 1).map((item) => (
+                    <div key={item.id} className="col-12 main-new">
                         <div className="body">
                             <div className="col-5 img">
-                                <img src={data.image} alt="img" />
+                                <img src={item.image} alt="img" />
                             </div>
                             <div className="col-7 texts">
                                 <div className="actual">
-                                    <div className="stamp">Actual new</div>
-                                    <div className="view"><Visibility className='icon' /> 16.5 k views</div>
-                                    <div className="date"><CalendarToday className='icon' /> {data.date}</div>
+                                    <div className="stamp">{t("newsact")}</div>
+                                    <div className="view"><Visibility className='icon' />32 {t("newsview")}</div>
+                                    <div className="date"><CalendarToday className='icon' /> {item.date}</div>
                                 </div>
-                                <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h3>
-                                <p className="desc">{uzbek && data.description_uz.slice(0, 330)}{russian && data.description_ru.slice(0, 330)}{english && data.description_en.slice(0, 330)}{mandarin && data.description_mn.slice(0, 330)}...</p>
-                                <Link to={`/news/${data.id}`} className="explore">batafsil o'qish</Link>
+                                <h3 className="name">{uzbek && item.name_uz}{russian && item.name_ru}{english && item.name_en}{mandarin && item.name_mn}</h3>
+                                <p className="desc">{uzbek && item.description_uz?.slice(0, 330)}{russian && item.description_ru?.slice(0, 330)}{english && item.description_en?.slice(0, 330)}{mandarin && item.description_mn?.slice(0, 330)}...</p>
+                                <Link to={`/news/${item.id}`} className="explore">{t("newsbtn")}</Link>
                             </div>
                         </div>
                     </div>
                 ))}
-                <h2 className="all-news">Barcha yangiliklarimiz</h2>
+                <h2 className="all-news">{t("newsall")}</h2>
                 <Slider {...settings} className='carousel'>
-                    {dataNews.map((data) => (
-                        getId != data.id &&
-                        <div key={data.id} className="new">
-                            <div className="body">
-                                <img src={data.image} alt="img" className='news-img' />
-                                <h3 className="name">{uzbek && data.name_uz.slice(0, 15)}{russian && data.name_ru.slice(0, 15)}{english && data.name_en.slice(0, 15)}{mandarin && data.name_mn.slice(0, 15)}...</h3>
-                                <p className="desc">{uzbek && data.description_uz.slice(0, 50)}{russian && data.description_ru.slice(0, 50)}{english && data.description_en.slice(0, 50)}{mandarin && data.description_mn.slice(0, 50)}...</p>
-                                <Link to={`/news/${data.id}`} className="explore">batafsil o'qish</Link>
-                            </div>
+                    {data?.data.map((item) => (
+                        // getId != item.id &&
+                        <div key={item.id} className="new">
+                            <Link to={`/news/${item.id}`} className="body">
+                                <img src={item.image} alt="img" className='news-img' />
+                                <h3 className="name">{uzbek && item.name_uz?.slice(0, 15)}{russian && item.name_ru?.slice(0, 15)}{english && item.name_en?.slice(0, 15)}{mandarin && item.name_mn?.slice(0, 15)}...</h3>
+                                <p className="desc">{uzbek && item.description_uz?.slice(0, 50)}{russian && item.description_ru?.slice(0, 50)}{english && item.description_en?.slice(0, 50)}{mandarin && item.description_mn?.slice(0, 50)}...</p>
+                                <div className="explore">{t("newsbtn")}</div>
+                            </Link>
                         </div>
                     ))}
                 </Slider>

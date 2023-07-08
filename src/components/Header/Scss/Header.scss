@@ -31,6 +31,8 @@
                 height: 100%;
                 object-fit: cover;
                 position: absolute;
+                filter: brightness(0.5);
+                -webkit-filter: brightness(0.5);
             }
 
             .wrapper {
@@ -89,14 +91,17 @@
                 }
 
                 .btns {
+                    z-index: 4;
                     display: flex;
                     margin-top: 2vw;
+                    position: sticky;
                     align-items: center;
                     justify-content: start;
 
                     .explore {
                         display: flex;
                         color: black;
+                        cursor: pointer;
                         padding: 1vw 2vw;
                         align-items: center;
                         border-radius: 13px;
@@ -125,7 +130,7 @@
 
                         @media (max-width:450px) {
                             font-size: 13px;
-                            padding: 7px 15px;
+                            padding: 7px 20px;
                         }
 
                         &:nth-child(2) {
@@ -133,6 +138,11 @@
                             margin-left: 20px;
                             border: solid 1px #377DE7;
                             background-color: #377DE7;
+
+                            &:hover {
+                                border-color: #0e5bcffd;
+                                background-color: #0e5bcffd;
+                            }
 
                             @media (max-width:450px) {
                                 margin-left: 10px;
@@ -171,6 +181,11 @@
                                 margin-left: 5px;
                             }
                         }
+
+                        .res-arrow {
+                            visibility: hidden;
+                            margin-left: -17px;
+                        }
                     }
                 }
 
@@ -178,12 +193,22 @@
         }
 
         .slick-dots {
-            bottom: 20%;
             opacity: 1;
             z-index: 3;
+            bottom: 20%;
+            width: auto;
             display: flex;
             align-items: center;
+            left: calc(50% - 20px);
             justify-content: center;
+
+            @media (max-width:600px) {
+                bottom: 15%;
+            }
+
+            @media (max-width:450px) {
+                bottom: 12%;
+            }
 
             li {
                 padding: 0 10px;

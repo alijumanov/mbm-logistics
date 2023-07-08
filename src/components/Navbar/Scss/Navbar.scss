@@ -91,11 +91,11 @@
                     }
                 }
 
-                &:active {
-                    .hover-link {
-                        display: none;
-                    }
-                }
+                // &:active {
+                //     .hover-link {
+                //         display: none;
+                //     }
+                // }
 
                 @media(max-width:767px) {
                     width: 100%;
@@ -178,7 +178,7 @@
 
                     .link-bar {
                         padding: 0;
-                        overflow: hidden;
+                        // overflow: hidden;
                         border-radius: 9px;
                         -webkit-border-radius: 9px;
                         -moz-border-radius: 9px;
@@ -198,14 +198,45 @@
 
                         li {
                             list-style: none;
+                            position: relative;
+
+                            &:hover {
+                                .hover-link1 {
+                                    visibility: visible;
+                                }
+                            }
+
+                            &:nth-child(1) {
+                                .link1 {
+                                    border-top-left-radius: 9px;
+                                    border-top-right-radius: 9px;
+
+                                    @media (max-width:767px) {
+                                        border-top-left-radius: 5px;
+                                        border-top-right-radius: 5px;
+                                    }
+                                }
+                            }
+
+                            &:last-child {
+                                .link1 {
+                                    border-bottom-left-radius: 9px;
+                                    border-bottom-right-radius: 9px;
+
+                                    @media (max-width:767px) {
+                                        border-top-left-radius: 5px;
+                                        border-top-right-radius: 5px;
+                                    }
+                                }
+                            }
 
                             .link1 {
                                 width: 100%;
                                 display: flex;
-                                color: rgba(255, 255, 255, 0.575);
                                 font-size: 1.1vw;
                                 padding: 10px 2vw;
                                 text-decoration: none;
+                                color: rgba(255, 255, 255, 0.575);
                                 font-family: 'Mulish', sans-serif;
 
                                 @media(max-width:1100px) {
@@ -225,6 +256,91 @@
                                 &:hover {
                                     color: white;
                                     background-color: #6ca7ff7c;
+                                }
+                            }
+
+                            .hover-link1 {
+                                top: 0;
+                                z-index: 2;
+                                width: 20vw;
+                                right: -20vw;
+                                visibility: hidden;
+                                position: absolute;
+                                padding-left: 0.5vw;
+
+                                @media(max-width:1100px) {
+                                    width: 24vw;
+                                    right: -24vw;
+                                }
+
+                                @media(max-width:767px) {
+                                    width: 260px;
+                                    display: none;
+                                    right: -260px;
+                                    padding-left: 10px;
+                                }
+
+                                @media(max-width:450px) {
+                                    width: 240px;
+                                    padding-left: 20px;
+                                }
+
+                                .link-bar {
+                                    padding: 0;
+                                    overflow: hidden;
+                                    border-radius: 9px;
+                                    -webkit-border-radius: 9px;
+                                    -moz-border-radius: 9px;
+                                    -ms-border-radius: 9px;
+                                    -o-border-radius: 9px;
+                                    background: #0D0D0D;
+                                    box-shadow: 8px 16px 64px rgba(0, 0, 0, 0.15);
+
+                                    @media(max-width:767px) {
+                                        border-radius: 5px;
+                                        -webkit-border-radius: 5px;
+                                        -moz-border-radius: 5px;
+                                        -ms-border-radius: 5px;
+                                        -o-border-radius: 5px;
+                                        background-color: rgba(255, 255, 255, 0.817);
+                                    }
+
+                                    li {
+                                        list-style: none;
+
+                                        .link1 {
+                                            width: 100%;
+                                            display: flex;
+                                            font-size: 1.1vw;
+                                            padding: 10px 2vw;
+                                            text-decoration: none;
+                                            border-top-left-radius: 0;
+                                            border-top-right-radius: 0;
+                                            border-bottom-left-radius: 0;
+                                            border-bottom-right-radius: 0;
+                                            font-family: 'Mulish', sans-serif;
+                                            color: rgba(255, 255, 255, 0.575);
+
+                                            @media(max-width:1100px) {
+                                                font-size: 1.4vw;
+                                            }
+
+                                            @media(max-width:767px) {
+                                                color: black;
+                                                font-size: 16px;
+                                            }
+
+                                            @media (max-width:450px) {
+                                                font-size: 14px;
+                                                padding: 5px 20px;
+                                            }
+
+                                            &:hover {
+                                                color: white;
+                                                background-color: #6ca7ff7c;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -563,6 +679,23 @@
                                 &:hover {
                                     color: black;
                                     background-color: #6ca7ff7c;
+                                }
+                            }
+
+                            .hover-link1 {
+                                .link-bar {
+                                    background-color: white;
+
+                                    li {
+                                        .link1 {
+                                            color: rgba(0, 0, 0, 0.579);
+
+                                            &:hover {
+                                                color: black;
+                                                background-color: #6ca7ff7c;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

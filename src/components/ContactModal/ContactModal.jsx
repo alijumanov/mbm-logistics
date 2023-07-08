@@ -53,9 +53,9 @@ const ContactModal = ({ changeModal, changeContactModal }) => {
         <>
             <div className='ContactModal'>                
                 <h3>{t("contact7")}</h3>
-                <input type="text" className={`forms-control ${invalidName && "red-line"}`} placeholder={`${t("contact3")}`} value={nameValue} onChange={(e) => changeName(e)} />
-                <input type="number" className={`forms-control ${invalidNumber && "red-line"}`} placeholder={`${t("contact4")}`} value={numberValue} onChange={(e) => changeNumber(e)} />
-                <button onClick={() => sendMessage()}>{t("contact6")}</button>
+                <input type="text" className={`forms-control ${invalidName && "red-line"}`} placeholder={`${t("w5")}`} value={nameValue} onChange={(e) => changeName(e)} />
+                <input type="number" className={`forms-control ${invalidNumber && "red-line"}`} placeholder={`${t("w6")}`} value={numberValue} onChange={(e) => changeNumber(e)} />
+                <button onClick={() => sendMessage()}>{t("send")}</button>
             </div>
             <div className="contrast" onClick={() => changeContactModal()}></div>
         </>

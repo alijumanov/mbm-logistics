@@ -1,24 +1,34 @@
 import React from 'react';
 import News from './News';
 import './Scss/AloneNews.scss';
-import { dataNews } from '../../api/Api';
+import { useQuery } from 'react-query';
 import Contacts from '../Contacts/Contacts';
+import { fetchNewsData } from '../../api/Api';
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
 const AloneNews = ({ english, russian, uzbek, mandarin, changeModal, dark }) => {
 
     const { id } = useParams();
 
+    // data of news
+
+    const { isLoading, data } = useQuery('news', fetchNewsData);
+
+    // i18next
+
+    const { t } = useTranslation();
+
     return (
         <div className={`AloneNews main ${!dark && "light-alonenews"}`} style={{ backgroundColor: `${dark ? "#1A1A1A" : "#F2F2F2"}` }}>
             <div className="wrapper top-wrapper">
-                <h1 className="title">Logistika Yangiliklari</h1>
+                <h1 className="title">{t("news")}</h1>
                 <div className="links">
-                    <Link className='link' to="/">Home &#62;</Link>
-                    <a className='link' href="#">News</a>
+                    <Link className='link' to="/">{t("link1")} &#62;</Link>
+                    <a className='link' href="#">{t("link4")}</a>
                 </div>
             </div>
-            {dataNews.filter((c) => c.id == id).map((data) => (
+            {data?.data.filter((c) => c.id == id).map((data) => (
                 <div key={data.id}>
                     <div className="col-12 imgs">
                         <img src={data.image} alt="backImg" className='back-img' />
@@ -31,7 +41,7 @@ const AloneNews = ({ english, russian, uzbek, mandarin, changeModal, dark }) => 
                 </div>
             ))}
             <div style={{ backgroundColor: `${dark ? "black" : "#F2F2F2"}` }}>
-                <Contacts changeModal={changeModal} dark={dark} />
+                <Contacts changeModal={changeModal} dark={dark} english={english} uzbek={uzbek} russian={russian} mandarin={mandarin} />
             </div>
         </div>
     );

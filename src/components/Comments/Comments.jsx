@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Scss/Comments.scss';
 import Slider from 'react-slick';
-import { dataComments, fetchCommentsData } from '../../api/Api';
 import { useQuery } from 'react-query';
 import { Skeleton } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { fetchCommentsData } from '../../api/Api';
 
 const Comments = ({ english, russian, uzbek, mandarin, dark }) => {
 
@@ -33,9 +34,13 @@ const Comments = ({ english, russian, uzbek, mandarin, dark }) => {
         ]
     };
 
+    // i18next
+
+    const { t } = useTranslation();
+
     // data of services
 
-    const { isLoading, data } = useQuery('header-slider', fetchCommentsData);
+    const { isLoading, data } = useQuery('comments', fetchCommentsData);
 
     // skeleton loading
 
@@ -75,17 +80,18 @@ const Comments = ({ english, russian, uzbek, mandarin, dark }) => {
     return (
         <div className={`Comments main ${!dark && "light-comments"}`}>
             <div className="wrapper">
-                <h1 className="title">Fikr va mulohazalar</h1>
+                <h1 className="title">{t("otziv")}</h1>
                 <Slider {...settings} className='carousel'>
-                    {dataComments.map((data, index) => (
-                        <div key={data.id} className="comment">
+                    {data?.data.map((item, index) => (
+                        <div key={item.id} className="comment">
                             <div className="body">
-                                <img src={data.image} alt="img" className='comment-img' />
+                                <img src={item.image} alt="img" className='comment-img' />
                                 <div className="top">
-                                    <h3 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h3>
-                                    <div className="date">{data.date}</div>
+                                    <h3 className="name">{uzbek && item.author_uz}{russian && item.author_ru}{english && item.author_en}{mandarin && item.author_mn}</h3>
+                                    <h3 className="name">{item.author}</h3>
+                                    <div className="date">{item.date}</div>
                                 </div>
-                                <p className='desc'>{uzbek && data.description_uz.slice(0, 120)}{russian && data.description_ru.slice(0, 120)}{english && data.description_en.slice(0, 120)}{mandarin && data.description_mn.slice(0, 120)}...</p>
+                                <p className='desc'>{uzbek && item.comment_uz?.slice(0, 120)}{russian && item.comment_ru?.slice(0, 120)}{english && item.comment_en?.slice(0, 120)}{mandarin && item.comment_mn?.slice(0, 120)}...</p>
                             </div>
                         </div>
                     ))}

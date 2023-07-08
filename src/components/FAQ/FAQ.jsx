@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Scss/FAQ.scss';
 import { useQuery } from 'react-query';
 import { Skeleton } from '@mui/material';
 import { Add } from '@mui/icons-material';
-import { dataFaqs, fetchFaqsData } from '../../api/Api';
+import { fetchFaqsData } from '../../api/Api';
+import { useTranslation } from 'react-i18next';
 
-const FAQ = ({ english, russian, uzbek, mandarin, dark }) => {
+const FAQ = ({ english, russian, uzbek, mandarin, dark, activeIndex, setActiveIndex }) => {
 
-    const [activeIndex, setActiveIndex] = useState(null);
+    // i18next
+
+    const { t } = useTranslation();
 
     // data of services
 
-    const { isLoading, data } = useQuery('header-slider', fetchFaqsData);
+    const { isLoading, data } = useQuery('faqs', fetchFaqsData);
+
+    const dataFaqs = data?.data;
 
     // skeleton loading
 
@@ -42,20 +47,20 @@ const FAQ = ({ english, russian, uzbek, mandarin, dark }) => {
     return (
         <div className={`FAQ main ${!dark && "light-faq"}`}>
             <div className="wrapper">
-                <h1 className="title">Энг коп бериладиган саволлар</h1>
+                <h1 className="title">{t("faq")}</h1>
                 <div className="col-10 questions">
-                    {dataFaqs.map((data) => (
-                        <div key={data.id} className="col-12 question">
+                    {dataFaqs.map((item) => (
+                        <div key={item.id} className="col-12 question">
                             <div className="basic">
-                                <h4 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h4>
-                                <div className="open-close" onClick={() => activeIndex != dataFaqs.indexOf(data) ? setActiveIndex(dataFaqs.indexOf(data)) : setActiveIndex(null)}><Add className={`icon ${activeIndex == dataFaqs.indexOf(data) && "active-icon"}`} /></div>
+                                <h4 className="name">{uzbek && item.question_uz}{russian && item.question_ru}{english && item.question_en}{mandarin && item.question_mn}</h4>
+                                <div className="open-close" onClick={() => activeIndex != dataFaqs.indexOf(item) ? setActiveIndex(dataFaqs.indexOf(item)) : setActiveIndex(null)}><Add className={`icon ${activeIndex == dataFaqs.indexOf(item) && "active-icon"}`} /></div>
                             </div>
-                            <div className={`desc ${activeIndex == dataFaqs.indexOf(data) && "active-desc"}`}>{uzbek && data.description_uz}{russian && data.description_ru}{english && data.description_en}{mandarin && data.description_mn}</div>
+                            <p className={`desc ${activeIndex == dataFaqs.indexOf(item) && "active-desc"}`} >{uzbek && item.answer_uz}{russian && item.answer_ru}{english && item.answer_en}{mandarin && item.answer_mn}</p>
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,9 +1,13 @@
 import React from 'react';
 import './Scss/Advantages.scss';
+import { useTranslation } from 'react-i18next';
 import Img from '../../assets/images/advantage.jpg';
 import { GppGoodRounded, VerifiedRounded, Visibility } from '@mui/icons-material';
 
 const Advantages = ({ dark, changeContactModal }) => {
+
+    const { t } = useTranslation();
+
     return (
         <div className={`Advantages main ${!dark && "light-advantages"}`}>
             <div className="wrapper">
@@ -11,29 +15,31 @@ const Advantages = ({ dark, changeContactModal }) => {
                     <img src={Img} alt="img" />
                 </div>
                 <div className="col-5 texts">
-                    <p>ozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadiozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadiozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadi</p>
+                    <p>{t("adv1")}</p>
                     <div className="icons">
                         <div className="col-4 tool">
                             <div className="body">
                                 <VerifiedRounded className='icon' />
-                                <p>Hujjatlar</p>
+                                <p>{t("icon1")}</p>
                             </div>
                         </div>
                         <div className="col-4 tool">
                             <div className="body">
                                 <GppGoodRounded className='icon' />
-                                <p>Straxovka qilish</p>
+                                <p>{t("icon2")}</p>
                             </div>
                         </div>
                         <div className="col-4 tool">
                             <div className="body">
                                 <Visibility className='icon' />
-                                <p>Yetkazib berilgan yuklar</p>
+                                <p>{t("icon3")}</p>
                             </div>
                         </div>
                     </div>
-                    <p>ozingizga kerakli logistika turini tanlang, massani kiriting , yetkazib berish muddatini kiriting.Bizning mutaxasislar sizga 24 soat ichida aloqaga chiqishadi va bepul konsultatsiya berishadiozingizga</p>
-                    <div className="order" onClick={() => changeContactModal()}>buyurtma berish</div>
+                    <p>{t("adv2")}</p>
+                    <div className="explore">
+                        <div className="order" onClick={() => changeContactModal()}>{t("buybtn")}</div>
+                    </div>
                 </div>
             </div>
         </div>
