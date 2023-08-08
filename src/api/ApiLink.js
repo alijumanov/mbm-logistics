@@ -1,4 +1,4 @@
-const BASE_URL = `https://fast-mbm.bnpfabric.uz/api`;
+const BASE_URL = `http://api.mbm.uz/api`;
 
 export const SERVICES_DATA_URL = `${BASE_URL}/services_category/`;
 export const ONE_SERVICE_DATA_URL = `${BASE_URL}/services/`;
