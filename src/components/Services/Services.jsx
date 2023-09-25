@@ -53,15 +53,15 @@ const Services = ({ english, russian, uzbek, mandarin, dark }) => {
         <div className='Services main'>
             <div className="wrapper">
                 <div className="cards col-12">
-                    {data?.data.map((data) => (
-                        <div key={data.id} className="col-4 service">
-                            <Link to={`/services/${data.id}`} className={`body ${!dark && "light-body"}`}>
+                    {data?.data?.map((data) => (
+                        <div key={data?.id} className="col-4 service">
+                            <Link to={`/services/${data?.id}`} className={`body ${!dark && "light-body"}`}>
                                 <div className="img">
-                                    <img src={data.image1} alt="img" className='services-img' />
+                                    <img src={data?.image1} alt="img" className='services-img' />
                                 </div>
                                 <div className="texts">
-                                    <h5 className="name">{uzbek && data.name_uz}{russian && data.name_ru}{english && data.name_en}{mandarin && data.name_mn}</h5>
-                                    <p className="desc">{uzbek && data.description_uz?.slice(0, 130)}{russian && data.description_ru?.slice(0, 130)}{english && data.description_en?.slice(0, 130)}{mandarin && data.description_mn?.slice(0, 130)}...</p>
+                                    <h5 className="name">{uzbek && data?.name_uz}{russian && data?.name_ru}{english && data?.name_en}{mandarin && data?.name_mn}</h5>
+                                    <p className="desc">{uzbek && data?.description_uz?.slice(0, 130)}{russian && data?.description_ru?.slice(0, 130)}{english && data?.description_en?.slice(0, 130)}{mandarin && data?.description_mn?.slice(0, 130)}...</p>
                                     <div className="explore">{t("p1btn")}</div>
                                 </div>
                             </Link>

@@ -23,14 +23,14 @@ const AloneService = ({ english, russian, uzbek, mandarin, dark, changeModal, ch
 
     return (
         <div className={`AloneService main ${!dark && "light-aloneservices"}`} style={{ backgroundColor: `${dark ? "#1A1A1A" : "#F2F2F2"}` }}>
-            {data?.data.filter((c) => c.id == id).map((item) => (
-                <div key={item.id} className="wrapper top-wrapper">
-                    <h1 className="title">{uzbek && item.name_uz}{russian && item.name_ru}{english && item.name_en}{mandarin && item.name_mn}</h1>
+            {data?.data?.filter((c) => c.id == id)?.map((item) => (
+                <div key={item?.id} className="wrapper top-wrapper">
+                    <h1 className="title">{uzbek && item?.name_uz}{russian && item?.name_ru}{english && item?.name_en}{mandarin && item?.name_mn}</h1>
                     <div className="links">
                         <Link className='link' to="/">{t("link1")} &#62;</Link>
                         <a className='link' href="#">{t("link3")}</a>
                     </div>
-                    <p className="desc">{uzbek && item.description_uz}{russian && item.description_ru}{english && item.description_en}{mandarin && item.description_mn}</p>
+                    <p className="desc">{uzbek && item?.description_uz}{russian && item?.description_ru}{english && item?.description_en}{mandarin && item?.description_mn}</p>
                     <div className="info-cards">
                         <div className="col-4 info">
                             <div className="body">
@@ -72,10 +72,10 @@ const AloneService = ({ english, russian, uzbek, mandarin, dark, changeModal, ch
                     </div>
                 </div>
             ))}
-            {data?.data.filter((c) => c.id == id).map((item) => (
-                item.image2 &&
+            {data?.data?.filter((c) => c.id == id)?.map((item) => (
+                item?.image2 &&
                 <div className="col-12 back-img">
-                    <img key={item.id} src={item.image2} alt="img" />
+                    <img key={item?.id} src={item?.image2} alt="img" />
                 </div>
             ))}
             <div className="wrapper">
